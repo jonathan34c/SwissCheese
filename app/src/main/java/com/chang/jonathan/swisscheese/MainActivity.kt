@@ -1,6 +1,7 @@
 package com.chang.jonathan.swisscheese
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
@@ -12,8 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
+import com.chang.jonathan.swisscheese.login.LoginActivity
 import com.chang.jonathan.swisscheese.main.MainScreen
 import com.chang.jonathan.swisscheese.main.getMainScreenForMenuItem
+import com.chang.jonathan.swisscheese.session.Session
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -23,15 +26,24 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private lateinit var mainPagerAdapter: MainPagerAdapter
     private lateinit var toolBar : Toolbar
     private lateinit var profileBtn : ImageView
+    private lateinit var session: Session
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
        // setSupportActionBar(toolbar)
 
+        session = Session()
+        session.Session(this)
         toolBar = findViewById(R.id.toolbar)
         profileBtn = toolBar.findViewById(R.id.btn_profile)
         profileBtn.setOnClickListener {
-            Toast.makeText(this,"profile", Toast.LENGTH_SHORT).show()
+            if(!session.isLogin()){
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }else{
+                logout()
+            }
+
         }
         setSupportActionBar(toolBar)
         viewPager = findViewById(R.id.view_pager)
@@ -53,6 +65,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         })
 
 
+    }
+
+    override fun onResume() {
+        if(session.isLogin()){
+            profileBtn.setImageResource(R.drawable.ic_logout)
+        }
+        super.onResume()
+    }
+
+    fun logout(){
+        session.logOut()
+        profileBtn.setImageResource(R.drawable.ic_account)
+        Toast.makeText(this, "You are now Logout", Toast.LENGTH_LONG).show()
     }
 
     private fun scrollToScreen(mainScreen: MainScreen) {

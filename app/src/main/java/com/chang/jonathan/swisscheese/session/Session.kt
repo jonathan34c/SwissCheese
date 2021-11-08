@@ -2,6 +2,7 @@ package com.chang.jonathan.swisscheese.session
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.database.sqlite.SQLiteDatabase
 
 class Session {
     private lateinit var prefs : SharedPreferences
@@ -21,7 +22,7 @@ class Session {
         return prefs.getString(userNameString, "") != ""
     }
     fun logOut(){
-        prefs.edit().putString(userNameString, "")
+        prefs.edit().putString(userNameString, "").commit()
     }
 
 }
