@@ -45,11 +45,10 @@ class Post {
         db.execSQL("drop table if exists post")
         db.execSQL("create table post ( id integer primary key autoincrement, title text, content text, user text )")
         db.execSQL("insert into post ( title, content , user) values ('Swiss Cheese', 'The best cheese in the world with but with alot of holes in it', 'cs5277 user')")
-        db.execSQL("insert into post ( title, content , user) values ('Goat Cheese', '\"<img src=\\\"https://www.seriouseats.com/thmb/B7FxU6kLnx5co7slCY7llQ1cPwQ=/1500x1125/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2015__03__20150324-goat-cheese-chevre-dargental-vicky-wasik-5-2d023e6c28c34dc1b3620a81f634fd93.jpg\\\"\\n\"', 'goatcheese 2022')")
-//        db.execSQL("insert into post ( username, password ) values ('angela', 'password333')")
-//        db.execSQL("insert into post ( username, password ) values ('gideon', 'password999')")
-//        db.execSQL("insert into post ( username, password ) values ('tyrell', 'password654')")
-//        db.execSQL("insert into post ( username, password ) values ('darlene', 'password789')")
+        db.execSQL("insert into post ( title, content , user) values ('Goat Cheese', 'Hate the smell but its the best cheese in the world!')")
+        db.execSQL("insert into post ( title, content , user) values ('Wonderful Cheese', '<a href=\" http://foo.com/login.php?username=%22+%2F%3E%3Cscript%3Ealert%28%27XSS%21%27%29%3B%3C%2Fscript%3E\">\n" +
+                "  Click here for free money!\n" +
+                "</a>', 'cs5277 user')")
     }
 
 

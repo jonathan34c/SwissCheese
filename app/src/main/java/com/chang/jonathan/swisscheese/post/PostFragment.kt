@@ -27,7 +27,7 @@ class PostFragment : Fragment() {
         post =Post()
         post.Post(requireContext())
         var posts = post.getAllPosts()
-        val adapter = PostAdapter(posts)
+        val adapter = PostAdapter(posts, requireContext())
         recyclerView.adapter = adapter
     }
 

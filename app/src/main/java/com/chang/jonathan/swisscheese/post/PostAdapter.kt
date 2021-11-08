@@ -1,5 +1,9 @@
 package com.chang.jonathan.swisscheese.post
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +11,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.chang.jonathan.swisscheese.R
+import com.chang.jonathan.swisscheese.login.LoginActivity
 
-class PostAdapter(private val list: List<PostInfo>):
+class PostAdapter(private val list: List<PostInfo>, private val contect: Context):
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
@@ -30,7 +35,10 @@ class PostAdapter(private val list: List<PostInfo>):
         holder.contentTv.text = post.content
         holder.userTv.text = post.userName
         holder.cardCv.setOnClickListener {
-
+            val intent = Intent(contect, ViewPostActivity::class.java)
+            intent.putExtra("title", post.title)
+            intent.putExtra("content", post.content)
+            contect.startActivity(intent)
         }
     }
 

@@ -1,6 +1,8 @@
 package com.chang.jonathan.swisscheese.post
 
-class PostInfo(val title:String, val content: String, val userName: String) {
+import java.io.Serializable
+
+class PostInfo(val title:String, val content: String, val userName: String) :Serializable {
     fun getPostUsername():String{
         return userName
     }
