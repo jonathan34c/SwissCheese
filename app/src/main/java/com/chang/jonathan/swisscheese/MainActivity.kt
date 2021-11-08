@@ -16,6 +16,8 @@ import androidx.viewpager.widget.ViewPager
 import com.chang.jonathan.swisscheese.login.LoginActivity
 import com.chang.jonathan.swisscheese.main.MainScreen
 import com.chang.jonathan.swisscheese.main.getMainScreenForMenuItem
+import com.chang.jonathan.swisscheese.post.Post
+import com.chang.jonathan.swisscheese.post.PostActivity
 import com.chang.jonathan.swisscheese.session.Session
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private lateinit var mainPagerAdapter: MainPagerAdapter
     private lateinit var toolBar : Toolbar
     private lateinit var profileBtn : ImageView
+    private lateinit var addPostBtn: ImageView
     private lateinit var session: Session
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         session = Session()
         session.Session(this)
+        val post =Post()
+        post.Post(this)
+        post.populateDefaultPost()
         toolBar = findViewById(R.id.toolbar)
         profileBtn = toolBar.findViewById(R.id.btn_profile)
         profileBtn.setOnClickListener {
@@ -45,11 +51,21 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
         }
+        addPostBtn = toolBar.findViewById(R.id.btn_add)
+        addPostBtn.setOnClickListener {
+            if(!session.isLogin()){
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, PostActivity::class.java)
+                startActivity(intent)
+            }
+        }
         setSupportActionBar(toolBar)
         viewPager = findViewById(R.id.view_pager)
         bottomNavigationView = findViewById(R.id.navigation_bot)
         mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
-        var pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
+        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
         mainPagerAdapter.setItems(pagerList)
         scrollToScreen(MainScreen.HOME)
         selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)

@@ -13,8 +13,8 @@
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
 
-        <activity android:name=".login.LoginActivity">
-        </activity>
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".post.PostActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
