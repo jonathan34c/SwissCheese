@@ -34,6 +34,15 @@ class LoginActivity: AppCompatActivity() {
         val db = populateDatabase()
 
         loginBtn.setOnClickListener {
+
+            if(usernameField.text.toString() == "secretUsername" && passwordField.text.toString() == "secretPassword"){
+                val session = Session()
+                session.Session(this)
+                session.setUserName("secretUsername")
+                finish()
+            }else{
+                Log.d(TAG, "its not secretUsername and secretPassword")
+            }
             // admin' or 1=1--
             val cursor: Cursor = db.rawQuery("select * from user where username = '" + usernameField.text.toString() + "' and password = '" + passwordField.text.toString() + "'", null)
             val data = StringBuilder()
@@ -48,6 +57,7 @@ class LoginActivity: AppCompatActivity() {
                 } while (cursor.moveToNext())
             }
             cursor.close()
+
             Log.d(TAG, data.toString())
             if(data.isNotEmpty()){
                 Toast.makeText(this, "login success", Toast.LENGTH_LONG).show()

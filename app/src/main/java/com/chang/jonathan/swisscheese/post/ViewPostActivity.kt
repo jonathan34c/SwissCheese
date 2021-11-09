@@ -33,15 +33,27 @@ class ViewPostActivity: AppCompatActivity() {
 
         titleTv = findViewById(R.id.tv_view_title)
 
-
+        // view from post fragment
         var intent = intent
-        titleTv.text = intent.getStringExtra("title")
-        webview.loadData(intent.getStringExtra("content")?:"", "text/html; charset=utf-8","UTF-8")
+        var title = intent.getStringExtra("title")
+        if(title !=null){
+            titleTv.text = intent.getStringExtra("title")
+            webview.loadData(intent.getStringExtra("content")?:"", "text/html; charset=utf-8","UTF-8")
+        }else{
+
+            //./adb shell am start -d "http://www.swisscheese.com/swiss?t=hi\&c=YourHacked"
+            var uri = intent.data
+            var content = uri?.getQueryParameter("c")
+            var title = uri?.getQueryParameter("t")
+            titleTv.text = title
+            webview.loadData(content?:"", "text/html; charset=utf-8","UTF-8")
+        }
+
+
+
     }
 
-    //<a href=" http://foo.com/login.php?username=%22+%2F%3E%3Cscript%3Ealert%28%27XSS%21%27%29%3B%3C%2Fscript%3E">
-    //  Click here for free money!
-    //</a>
+//    <a href="http://foo.com/login.php?username=%22+%2F%3E%3Cscript%3Ealert%28%27XSS%21%27%29%3B%3C%2Fscript%3E">Click here for free money!</a>
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId

@@ -14,8 +14,22 @@
         tools:replace="android:appComponentFactory">
 
         <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".post.PostActivity"/>
-        <activity android:name=".post.ViewPostActivity"/>
+        <activity android:name=".post.PostActivity">
+
+        </activity>
+        <activity android:name=".post.ViewPostActivity">
+        <intent-filter
+            android:label="swisscheese">
+            <action android:name ="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <!-- Accept uri begin with "http://www.swisscheese.com/swiss?t=hi&c=whatsup" -->
+            <data android:scheme="http"
+                android:host ="www.swisscheese.com"
+                android:pathPrefix="/swiss"/>
+        </intent-filter>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
