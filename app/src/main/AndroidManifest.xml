@@ -12,12 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
-
+        <receiver android:name=".Receiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.chang.jonathan.swisscheese.CUSTOM_INTENT" />
+            </intent-filter>
+        </receiver>
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".post.PostActivity">
 
         </activity>
         <activity android:name=".post.ViewPostActivity">
+
+
         <intent-filter
             android:label="swisscheese">
             <action android:name ="android.intent.action.VIEW"/>
@@ -30,7 +38,8 @@
                 android:pathPrefix="/swiss"/>
         </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

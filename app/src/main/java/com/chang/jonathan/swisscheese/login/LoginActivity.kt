@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.chang.jonathan.swisscheese.Progress
 import com.chang.jonathan.swisscheese.R
 import com.chang.jonathan.swisscheese.session.Session
 
@@ -39,9 +40,18 @@ class LoginActivity: AppCompatActivity() {
                 val session = Session()
                 session.Session(this)
                 session.setUserName("secretUsername")
+                val progess = Progress()
+                progess.Progress(this)
+                progess.setProgress("logging")
+                progess.setProgress("hardcode")
                 finish()
             }else{
                 Log.d(TAG, "its not secretUsername and secretPassword")
+            }
+            if(usernameField.text.toString() == "sharedUsername" && passwordField.text.toString() == "sharedPassword"){
+                val progess = Progress()
+                progess.Progress(this)
+                progess.setProgress("shared")
             }
             // admin' or 1=1--
             val cursor: Cursor = db.rawQuery("select * from user where username = '" + usernameField.text.toString() + "' and password = '" + passwordField.text.toString() + "'", null)
@@ -64,6 +74,10 @@ class LoginActivity: AppCompatActivity() {
                 val session = Session()
                 session.Session(this)
                 session.setUserName(username.toString())
+                val progess = Progress()
+                progess.Progress(this)
+                progess.setProgress("sql")
+                finish()
                 finish()
             }else{
                 Toast.makeText(this, "login failed", Toast.LENGTH_LONG).show()

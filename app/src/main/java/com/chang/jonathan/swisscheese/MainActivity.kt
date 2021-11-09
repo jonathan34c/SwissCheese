@@ -3,6 +3,7 @@ package com.chang.jonathan.swisscheese
 
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private lateinit var profileBtn : ImageView
     private lateinit var addPostBtn: ImageView
     private lateinit var session: Session
+    lateinit var receiver: Receiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -66,10 +68,12 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         viewPager = findViewById(R.id.view_pager)
         bottomNavigationView = findViewById(R.id.navigation_bot)
         mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
-        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
-        mainPagerAdapter.setItems(pagerList)
-        scrollToScreen(MainScreen.HOME)
-        selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)
+//        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
+//        mainPagerAdapter.setItems(pagerList)
+//        scrollToScreen(MainScreen.HOME)
+//        selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)
+
+
        // supportActionBar?.title = MainScreen.HOME.titleStringId
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
         viewPager.adapter = mainPagerAdapter
@@ -82,8 +86,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         })
 
         val pref = getSharedPreferences("secretCode", Context.MODE_PRIVATE)
-        pref.edit().putString("username", "secretUsername").commit()
-        pref.edit().putString("password", "secretPassword").commit()
+        pref.edit().putString("username", "sharedUsername").commit()
+        pref.edit().putString("password", "sharedPassword").commit()
+
+        receiver= Receiver()
+        registerReceiver(receiver, IntentFilter("com.chang.jonathan.swisscheese.CUSTOME_INTENT"))
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
+        mainPagerAdapter.setItems(pagerList)
+        scrollToScreen(MainScreen.HOME)
+        selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)
     }
 
     override fun onResume() {
