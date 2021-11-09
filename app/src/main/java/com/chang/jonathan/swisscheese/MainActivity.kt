@@ -1,6 +1,7 @@
 package com.chang.jonathan.swisscheese
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.ContextMenu
@@ -80,7 +81,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         })
 
-
+        val pref = getSharedPreferences("secretCode", Context.MODE_PRIVATE)
+        pref.edit().putString("username", "secretUsername").commit()
+        pref.edit().putString("password", "secretPassword").commit()
     }
 
     override fun onResume() {
