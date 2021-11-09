@@ -45,10 +45,10 @@ class Post {
         db.execSQL("drop table if exists post")
         db.execSQL("create table post ( id integer primary key autoincrement, title text, content text, user text )")
         db.execSQL("insert into post ( title, content , user) values ('Swiss Cheese', 'The best cheese in the world with but with alot of holes in it', 'cs5277 user')")
-        db.execSQL("insert into post ( title, content , user) values ('Goat Cheese', 'Hate the smell but its the best cheese in the world!')")
+        db.execSQL("insert into post ( title, content , user) values ('Goat Cheese', 'Hate the smell but its the best cheese in the world!', 'User 123')")
         db.execSQL("insert into post ( title, content , user) values ('Wonderful Cheese', '<a href=\" http://foo.com/login.php?username=%22+%2F%3E%3Cscript%3Ealert%28%27XSS%21%27%29%3B%3C%2Fscript%3E\">\n" +
                 "  Click here for free money!\n" +
-                "</a>', 'cs5277 user')")
+                "</a>', 'Hacker')")
     }
 
 
