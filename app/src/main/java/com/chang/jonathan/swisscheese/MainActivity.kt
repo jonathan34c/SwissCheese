@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         }
         setSupportActionBar(toolBar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         viewPager = findViewById(R.id.view_pager)
         bottomNavigationView = findViewById(R.id.navigation_bot)
         mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onStart() {
         super.onStart()
-        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROFILE, MainScreen.SETTING)
+        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROGRESS, MainScreen.SETTING)
         mainPagerAdapter.setItems(pagerList)
         scrollToScreen(MainScreen.HOME)
         selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)

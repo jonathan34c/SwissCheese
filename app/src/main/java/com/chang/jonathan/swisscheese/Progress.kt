@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 
 class Progress {
     private lateinit var prefs : SharedPreferences
-    private final val userNameString ="username"
     fun Progress(ctx: Context){
         prefs = ctx.getSharedPreferences("progress", Context.MODE_PRIVATE)
     }
@@ -21,5 +20,30 @@ class Progress {
         }
     }
 
+    fun hasBroadcasr():Boolean{
+        return prefs.getBoolean("broadcast", false)
+    }
+    fun hasDeepLink():Boolean{
+        return prefs.getBoolean("deeplink", false)
+    }
+    fun hasLogging():Boolean{
+        return prefs.getBoolean("logging", false)
+    }
+    fun hasHardCode():Boolean{
+        return prefs.getBoolean("hardcode", false)
+    }
+    fun hasSql():Boolean{
+        return prefs.getBoolean("sql", false)
+    }
+    fun hasXss():Boolean{
+        return prefs.getBoolean("xss", false)
+    }
+    fun hasShared():Boolean{
+        return prefs.getBoolean("shared", false)
+    }
+
+    fun isAllpass():Boolean{
+        return hasBroadcasr() && hasDeepLink() && hasLogging() && hasHardCode() && hasSql() && hasXss() && hasShared()
+    }
 
 }

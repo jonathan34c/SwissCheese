@@ -10,9 +10,9 @@ enum class MainScreen(@IdRes val menuItemId: Int,
                       @DrawableRes val menuItemIconId: Int,
                       val titleStringId: String,
                       val fragment: Fragment) {
-    HOME(R.id.homeFragment, R.drawable.ic_launcher_background, "Home", PostFragment()),
+    HOME(R.id.homeFragment, R.drawable.ic_home, "Home", PostFragment()),
     SETTING(R.id.settingsFragment, R.drawable.ic_launcher_background, "Setting", HomeFragment()),
-    PROFILE(R.id.profileFragment, R.drawable.ic_launcher_background, "Profile", HomeFragment())
+    PROGRESS(R.id.progressFragment, R.drawable.ic_check, "Progress", ProgressFragment())
 }
 
 fun getMainScreenForMenuItem(menuItemId: Int): MainScreen? {

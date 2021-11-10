@@ -17,7 +17,6 @@ import com.chang.jonathan.swisscheese.session.Session
 class ViewPostActivity: AppCompatActivity() {
     private lateinit var toolBar : Toolbar
     private lateinit var webview: WebView
-    private lateinit var titleTv: TextView
     lateinit var receiver: Receiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +38,13 @@ class ViewPostActivity: AppCompatActivity() {
         settings.setSupportZoom(true)
         webview.webChromeClient = WebChromeClient()
 
-        titleTv = findViewById(R.id.tv_view_title)
-
         // view from post fragment
         var intent = intent
-        var title = intent.getStringExtra("title")
+        var content = intent.getStringExtra("content")?:""
         var from = intent.getStringExtra("from")
-        if(title !=null){
-            titleTv.text = intent.getStringExtra("title")
-            webview.loadData(intent.getStringExtra("content")?:"", "text/html; charset=utf-8","UTF-8")
+        if(!content.isNullOrEmpty()){
+            supportActionBar?.title = intent.getStringExtra("title")
+            webview.loadData(content, "text/html; charset=utf-8","UTF-8")
             if(from==null){
                 from = "xss"
             }
@@ -55,8 +52,7 @@ class ViewPostActivity: AppCompatActivity() {
             //./adb shell am start -d "http://www.swisscheese.com/swiss?t=hi\&c=YourHacked"
             var uri = intent.data
             var content = uri?.getQueryParameter("c")
-            var title = uri?.getQueryParameter("t")
-            titleTv.text = title
+            supportActionBar?.title = intent.getStringExtra("title")
             webview.loadData(content?:"", "text/html; charset=utf-8","UTF-8")
             from = "deeplink"
 

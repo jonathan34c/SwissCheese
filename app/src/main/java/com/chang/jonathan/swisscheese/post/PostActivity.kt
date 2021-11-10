@@ -2,6 +2,7 @@ package com.chang.jonathan.swisscheese.post
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -59,6 +60,14 @@ class PostActivity :AppCompatActivity(){
         for(p in posrs){
             Log.d(TAG,p.title)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if(id == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

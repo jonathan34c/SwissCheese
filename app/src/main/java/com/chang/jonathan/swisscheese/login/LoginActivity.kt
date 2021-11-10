@@ -45,6 +45,7 @@ class LoginActivity: AppCompatActivity() {
                 progess.setProgress("logging")
                 progess.setProgress("hardcode")
                 finish()
+                return@setOnClickListener
             }else{
                 Log.d(TAG, "its not secretUsername and secretPassword")
             }
@@ -77,7 +78,6 @@ class LoginActivity: AppCompatActivity() {
                 val progess = Progress()
                 progess.Progress(this)
                 progess.setProgress("sql")
-                finish()
                 finish()
             }else{
                 Toast.makeText(this, "login failed", Toast.LENGTH_LONG).show()
