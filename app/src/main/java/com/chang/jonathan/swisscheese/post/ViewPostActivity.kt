@@ -52,7 +52,7 @@ class ViewPostActivity: AppCompatActivity() {
             //./adb shell am start -d "http://www.swisscheese.com/swiss?t=hi\&c=YourHacked"
             var uri = intent.data
             var content = uri?.getQueryParameter("c")
-            supportActionBar?.title = intent.getStringExtra("title")
+            supportActionBar?.title =  uri?.getQueryParameter("t")
             webview.loadData(content?:"", "text/html; charset=utf-8","UTF-8")
             from = "deeplink"
 
