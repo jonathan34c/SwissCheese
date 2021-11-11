@@ -10,7 +10,7 @@ Like [Google Gruyere](https://google-gruyere.appspot.com/#0__gruyere), this Andr
 - [Logcat (part of Android Studio)](https://developer.android.com/studio/command-line/logcat)
 - [ADB (Android Debug Bridge)](https://developer.android.com/studio/command-line/adb)
 - [ADB Installation](https://www.xda-developers.com/install-adb-windows-macos-linux/#adbsetupmacos)
-- [Bais knowledge of Kotlin and Android](https://developer.android.com/quality?gclsrc=aw.ds&gclid=CjwKCAiA1aiMBhAUEiwACw25MaY1otf3Lm_UWfOuoUo_RTSdWYAUQp_Yuf5ZgSaknfHu9aaHcHV6SRoCXv4QAvD_BwE)
+- [Basic knowledge of Kotlin and Android](https://developer.android.com/quality?gclsrc=aw.ds&gclid=CjwKCAiA1aiMBhAUEiwACw25MaY1otf3Lm_UWfOuoUo_RTSdWYAUQp_Yuf5ZgSaknfHu9aaHcHV6SRoCXv4QAvD_BwE)
 
 # 📌 Note
 * This application runs locally so no one gets hurt :relieved:
