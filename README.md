@@ -181,6 +181,7 @@ ADB can also send a intent to the receiver. See if there's any receiver in the <
 <summary>Show me how it's done</summary>
  <li>Like the deeplink, there are 2 ways to do this. You can write a seperated "attacker" application or simulate the attack by ADB. </li>
  <li>Fire up the adb </li>
+  <li>enter <code>./adb shell am start -n com.chang.jonathan.swisscheese/.MainActivity</code> to find the registered intent</li>
  <li>enter <code>./adb shell am broadcast -a com.chang.jonathan.swisscheese.CUSTOME_INTENT --es content "YourHacked"</code> to send the intent</li>
  <li>by looling at the url you can see that you can enter the malicious code by changing the <code>--es content "YourHacked"</code> part</li>
 </details>

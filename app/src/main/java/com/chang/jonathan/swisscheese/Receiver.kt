@@ -8,11 +8,12 @@ import com.chang.jonathan.swisscheese.post.ViewPostActivity
 class Receiver :BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        val title= intent?.extras?.getString("title")
-        if (!title.isNullOrBlank()) {
+        val content= intent?.extras?.getString("content")
+        if (!content.isNullOrBlank()) {
             val intent = Intent(context, ViewPostActivity::class.java)
-            intent.putExtra("title", title)
+            intent.putExtra("content", content)
             intent.putExtra("from","broadcast")
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context?.startActivity(intent)
         }
     }

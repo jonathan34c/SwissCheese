@@ -44,6 +44,7 @@ class LoginActivity: AppCompatActivity() {
                 progess.Progress(this)
                 progess.setProgress("logging")
                 progess.setProgress("hardcode")
+                Toast.makeText(this, "login success", Toast.LENGTH_LONG).show()
                 finish()
                 return@setOnClickListener
             }else{
@@ -53,6 +54,12 @@ class LoginActivity: AppCompatActivity() {
                 val progess = Progress()
                 progess.Progress(this)
                 progess.setProgress("shared")
+                val session = Session()
+                session.Session(this)
+                session.setUserName("sharedUsername")
+                Toast.makeText(this, "login success", Toast.LENGTH_LONG).show()
+                finish()
+                return@setOnClickListener
             }
             // admin' or 1=1--
             val cursor: Cursor = db.rawQuery("select * from user where username = '" + usernameField.text.toString() + "' and password = '" + passwordField.text.toString() + "'", null)
