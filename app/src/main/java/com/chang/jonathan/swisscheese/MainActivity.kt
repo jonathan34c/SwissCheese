@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onStart() {
         super.onStart()
-        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROGRESS, MainScreen.SETTING)
+        val pagerList = arrayListOf(MainScreen.HOME, MainScreen.PROGRESS)
         mainPagerAdapter.setItems(pagerList)
         scrollToScreen(MainScreen.HOME)
         selectBottomNavigationViewMenuItem(MainScreen.HOME.menuItemId)

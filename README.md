@@ -188,6 +188,10 @@ ADB can also send a intent to the receiver. See if there's any receiver in the <
 
 
 ---
+# 💁🏽‍♂️Demo
+Still can't figure out? here's a step and step video demo to walk you through the attack (https://youtu.be/bYag5ETLaYE)
+
+---
 # 🙈Contribute
 
 Noticed a bug? Have a suggestion? Feel free to open an issue or create a pull request!
