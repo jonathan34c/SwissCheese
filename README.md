@@ -153,10 +153,10 @@ ADB could send an intent to any app if the format is right, check out the </code
 </details>
 <details>
 <summary>Show me how it's done</summary>
- <li>There are 2 ways to do this. You can write a seperated "attacker" application or simulate the attack by ADB. </li>
+ <li>There are 2 ways to do this. You can write a separated "attacker" application or simulate the attack by ADB. </li>
  <li>Fire up the adb </li>
 <li>enter <code>./adb shell am start -d "http://www.swisscheese.com/swiss?t=hi\&c=YourHacked" </code> to send the intent</li>
-  <li>by looling at the url you can see that you can enter the malicious code by changing the <code>c=XXX</code> part</li>
+  <li>by looking at the url you can see that you can enter the malicious code by changing the <code>c=XXX</code> part</li>
 </details>
 
 
@@ -179,11 +179,11 @@ ADB can also send a intent to the receiver. See if there's any receiver in the <
 
 <details>
 <summary>Show me how it's done</summary>
- <li>Like the deeplink, there are 2 ways to do this. You can write a seperated "attacker" application or simulate the attack by ADB. </li>
+ <li>Like the deeplink, there are 2 ways to do this. You can write a separated "attacker" application or simulate the attack by ADB. </li>
  <li>Fire up the adb </li>
   <li>enter <code>./adb shell am start -n com.chang.jonathan.swisscheese/.MainActivity</code> to find the registered intent</li>
  <li>enter <code>./adb shell am broadcast -a com.chang.jonathan.swisscheese.CUSTOME_INTENT --es content "YourHacked"</code> to send the intent</li>
- <li>by looling at the url you can see that you can enter the malicious code by changing the <code>--es content "YourHacked"</code> part</li>
+ <li>by looking at the url you can see that you can enter the malicious code by changing the <code>--es content "YourHacked"</code> part</li>
 </details>
 
 
