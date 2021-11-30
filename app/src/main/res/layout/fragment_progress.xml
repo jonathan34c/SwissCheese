@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="Insecure Logging"/>
 
             <RadioButton
@@ -30,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="Hardcoded Credentials"/>
 
             <RadioButton
@@ -37,12 +39,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="SQL Injection"/>
             <RadioButton
                 android:id="@+id/rb_xss"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="html cross site scripting "/>
 
             <RadioButton
@@ -50,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="Unsafe Sharepreference"/>
 
             <RadioButton
@@ -57,6 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="Vulnerable Deeplink"/>
 
             <RadioButton
@@ -64,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:clickable="false"
                 android:text="Insecure Broadcast Receiver"/>
 
             <TextView
